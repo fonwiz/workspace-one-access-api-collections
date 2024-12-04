@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "6c23ed02-c739-4931-a44f-ea72d7e44afe",
+		"name": "Access Create Directory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3247120"
+	},
+	"item": [
+		{
+			"name": "Create Directory",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.ad.over.ldap.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"DomainNew\",\n    \"bindDN\":\"CN=Administrator,CN=Users,DC=domain,DC=lan\",\n    \"directorySearchAttribute\":\"sAMAccountName\",\n    \"communicationMode\":\"UNSECURE\",\n    \"deleteInProgress\":false,\n    \"type\":\"ACTIVE_DIRECTORY_LDAP\",\n    \"groupsFilterQuery\":\"(objectCategory=group)\",\n    \"bindUserFilterQuery\":\"(objectCategory=person)\",\n    \"usersFilterQuery\":\"(&(objectClass=user)(objectCategory=person))\",\n    \"membershipAttribute\":\"member\",\n    \"objectUuidAttribute\":\"ObjectGUID\",\n    \"distinguishedNameAttribute\":\"distinguishedName\",\n    \"saveBindDnPasswordToCloud\":true,\n    \"useSRV\":false,\n    \"domainControllerHost\":\"dc.domain.lan\",\n    \"domainControllerPort\":389,\n    \"baseDN\":\"DC=domain,DC=lan\",\n    \"enableChangePassword\":false,\n    \"useGlobalCatalog\":false,\n    \"passwordAuthEnabled\":true,\n    \"bindPwd\":\"Password\",\n    \"edServices\":[\"d578d746-c49f-3665-b33f-1b517b2a11d0\"],\n    \"eaServices\":[\"71d87e92-a755-39fc-8399-baea1bc18e97\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Sync Schedule",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.sync.profile.syncschedule.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"frequency\":\"weekly\",\"dayOfWeek\":\"sunday\",\"hours\":23,\"minutes\":55,\"seconds\":0}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/syncprofile/syncschedule",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"syncprofile",
+						"syncschedule"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Domains (required)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.domain.list.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"items\":[{\"name\":\"fonwiz.lan\",\"netBiosName\":\"FONWIZ\",\"domainUuid\":null,\"selected\":true,\"resolved\":false,\"_links\":{}}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/directorydomains",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"directorydomains"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Primary Connector",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.sync.profile.eds+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"directoryServices\":[{\"enterpriseServiceUUID\":\"d578d746-c49f-3665-b33f-1b517b2a11d0\",\"hostName\":\"connector.domain.lan\"}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/syncprofile/services",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"syncprofile",
+						"services"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set user attribute mapping",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.sync.profile.userattributemapping.list.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"items\":[{\"attrName\":\"userName\",\"directoryName\":\"sAMAccountName\",\"required\":true,\"readOnly\":true},{\"attrName\":\"costCenter\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"department\",\"directoryName\":\"department\",\"required\":false,\"readOnly\":false},{\"attrName\":\"disabled\",\"directoryName\":\"userAccountControl\",\"required\":false,\"readOnly\":false},{\"attrName\":\"displayName\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"distinguishedName\",\"directoryName\":\"distinguishedName\",\"required\":false,\"readOnly\":false},{\"attrName\":\"division\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"domain\",\"directoryName\":\"canonicalName\",\"required\":false,\"readOnly\":false},{\"attrName\":\"email\",\"directoryName\":\"mail\",\"required\":false,\"readOnly\":false},{\"attrName\":\"emails\",\"directoryName\":\"mail\",\"required\":false,\"readOnly\":false},{\"attrName\":\"employeeID\",\"directoryName\":\"employeeID\",\"required\":false,\"readOnly\":false},{\"attrName\":\"firstName\",\"directoryName\":\"givenName\",\"required\":false,\"readOnly\":false},{\"attrName\":\"info\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"lastName\",\"directoryName\":\"sn\",\"required\":false,\"readOnly\":false},{\"attrName\":\"mS-DS-ConsistencyGuid\",\"directoryName\":\"mS-DS-ConsistencyGuid\",\"required\":false,\"readOnly\":false},{\"attrName\":\"managerDN\",\"directoryName\":\"managerDN\",\"required\":false,\"readOnly\":false},{\"attrName\":\"managerId\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"nickName\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"objectGUID\",\"directoryName\":\"objectGUID\",\"required\":false,\"readOnly\":false},{\"attrName\":\"organization\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"phone\",\"directoryName\":\"telephoneNumber\",\"required\":false,\"readOnly\":false},{\"attrName\":\"profileUrl\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"role\",\"directoryName\":\"\",\"required\":false,\"readOnly\":false},{\"attrName\":\"sourceAnchor\",\"directoryName\":\"mS-DS-ConsistencyGuid\",\"required\":false,\"readOnly\":false},{\"attrName\":\"title\",\"directoryName\":\"title\",\"required\":false,\"readOnly\":false},{\"attrName\":\"userPrincipalName\",\"directoryName\":\"userPrincipalName\",\"required\":false,\"readOnly\":false}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/syncprofile/userattributemapping",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"syncprofile",
+						"userattributemapping"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set groups sync (required)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.sync.profile.groups.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"excludeNestedGroupMembers\":false,\n\"identityGroupInfo\":{\"OU=Users,DC=domain,DC=lan\":\n    {\"mappedGroupData\":[{\"mappedGroup\":\n    {\"horizonName\":\"NewHires\",\"dn\":\"CN=NewHires,OU=Users,OU=Users,DC=domain,DC=lan\",\"objectGuid\":\"0b7077fa-48ea-4738-b5d3-9b6e8e72c9d1\",\"groupBaseDN\":\"OU=Users,DC=domain,DC=lan\",\"source\":\"DIRECTORY\"},\"selected\":true},{\"mappedGroup\":{\"horizonName\":\"Users\",\"dn\":\"CN=Users,OU=Users,OU=Users,DC=domain,DC=lan\",\"objectGuid\":\"ab3ea479-6d17-4188-856c-5e0061cd3ab0\",\"groupBaseDN\":\"OU=Users,DC=domain,DC=lan\",\"source\":\"DIRECTORY\"},\"selected\":true},{\"mappedGroup\":{\"horizonName\":\"Testuser4group\",\"dn\":\"CN=Testuser4group,OU=Users,DC=domain,DC=lan\",\"objectGuid\":\"063025bd-d474-4d31-8093-b97961314c93\",\"groupBaseDN\":\"OU=Users,DC=domain,DC=lan\",\"source\":\"DIRECTORY\"},\"selected\":true},{\"mappedGroup\":{\"horizonName\":\"Test4\",\"dn\":\"CN=VRA_Test4,OU=Groups,OU=Users,DC=domain,DC=lan\",\"objectGuid\":\"931f9b7d-b9e8-449d-8a75-24a805a64291\",\"groupBaseDN\":\"OU=Users,DC=domain,DC=lan\",\"source\":\"DIRECTORY\"},\"selected\":true}],\n\"numSelected\":4,\n\"numTotal\":-1,\n\"selected\":false\n}\n}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/syncprofile/groups",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"syncprofile",
+						"groups"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set user sync (required)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.sync.profile.users.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userDns\":[\"OU=Users,DC=domain,DC=lan\"],\"userFilters\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/syncprofile/users",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"syncprofile",
+						"users"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set safeguards",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.connector.management.directory.sync.profile.safeguards.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isConfigured\":false,\"removeGroup\":0,\"removeUserFromGroup\":5,\"addUserToGroup\":5,\"createUser\":null,\"removeUser\":5,\"updateUser\":5,\"removeGroups\":5,\"updateGroups\":5}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/connectormanagement/directoryconfigurations/:directoryConfigID/syncprofile/safeguards",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"connectormanagement",
+						"directoryconfigurations",
+						":directoryConfigID",
+						"syncprofile",
+						"safeguards"
+					],
+					"variable": [
+						{
+							"key": "directoryConfigID",
+							"value": "c059bb05-da6c-4939-9a2f-bd88b5bf76e2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
