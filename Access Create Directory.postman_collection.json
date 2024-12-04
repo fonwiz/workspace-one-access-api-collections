@@ -149,7 +149,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"items\":[{\"name\":\"fonwiz.lan\",\"netBiosName\":\"FONWIZ\",\"domainUuid\":null,\"selected\":true,\"resolved\":false,\"_links\":{}}]}",
+					"raw": "{\"items\":[{\"name\":\"domain.lan\",\"netBiosName\":\"DOMAIN\",\"domainUuid\":null,\"selected\":true,\"resolved\":false,\"_links\":{}}]}",
 					"options": {
 						"raw": {
 							"language": "json"
