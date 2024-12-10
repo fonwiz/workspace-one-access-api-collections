@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "4e8d7ddd-a27e-4291-ba9e-92716f31618a",
+		"name": "Manage Access catalog items",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3247120"
+	},
+	"item": [
+		{
+			"name": "1. Create oauth token Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data =  JSON.parse(responseBody);",
+							"",
+							"pm.environment.set(\"BearerToken\", (data.access_token));",
+							"pm.environment.set(\"RefreshToken\", (data.refresh_token));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{SharedSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Client}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/auth/oauthtoken",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"auth",
+						"oauthtoken"
+					]
+				},
+				"description": "take clientid and secret to generate bearer token"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get ADFS catalog items",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.catalog.item.list+json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.catalog.search+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"includeAttributes\": [\n    \"uiCapabilities\",\n    \"authInfo\"\n  ],\n  \"includeTypes\": [\n    \"Saml11\",\n    \"Saml20\"\n  ],\n  \"nameFilter\": \"ADFS\",\n  \"categories\": []\n}"
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/search?pageSize=200&startIndex=0&useAbsoluteUrl=true&locale=en",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems",
+						"search"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "200"
+						},
+						{
+							"key": "startIndex",
+							"value": "0"
+						},
+						{
+							"key": "useAbsoluteUrl",
+							"value": "true"
+						},
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. DELETE catalog item",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.catalog.item.list+json",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.catalog.search+json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/:uuid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems",
+						":uuid"
+					],
+					"variable": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
