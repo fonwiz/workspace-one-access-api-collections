@@ -1,0 +1,1175 @@
+{
+	"info": {
+		"_postman_id": "23c56c1d-5585-4f71-a137-e936549592d7",
+		"name": "Access Webapps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3247120"
+	},
+	"item": [
+		{
+			"name": "POST Create OAuth Bearer token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data =  JSON.parse(responseBody);",
+							"pm.environment.set(\"BearerToken\", (data.access_token));",
+							"pm.environment.set(\"RefreshToken\", (data.refresh_token));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{SharedSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Client}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/auth/oauthtoken",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"auth",
+						"oauthtoken"
+					]
+				},
+				"description": "take clientid and secret to generate bearer token"
+			},
+			"response": [
+				{
+					"name": "POST Create OAuth Bearer token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/auth/oauthtoken",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"auth",
+								"oauthtoken"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 08:31:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1120"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=HMJ4b+TWAUSwpJbgwXUZTq6z8NlJ6V9jCSAO7iibe3n6klB9l7cRZJ0yxu8UOgiRFViaVrt6hewgNwtIyb80XLfNcXnDwK9d3HVE0JKxUGPGPzr72kXzEZA9C9oR; Expires=Wed, 19 Feb 2025 08:31:01 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=HMJ4b+TWAUSwpJbgwXUZTq6z8NlJ6V9jCSAO7iibe3n6klB9l7cRZJ0yxu8UOgiRFViaVrt6hewgNwtIyb80XLfNcXnDwK9d3HVE0JKxUGPGPzr72kXzEZA9C9oR; Expires=Wed, 19 Feb 2025 08:31:01 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac5c45-3fb0861b207af92c18157f2c;"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-6dc6bfaf31c779357f60a479d9ec21a4' https: 'self'; style-src 'nonce-6dc6bfaf31c779357f60a479d9ec21a4' https: 'self'; img-src data: 'self'; frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache, no-store"
+						},
+						{
+							"key": "expires",
+							"value": "0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"scope\": \"admin\",\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJleHAiOjE3MzkzNTk4Nj...pKubV2CO9nFH6H3eV7eiQM\",\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 10799\n}"
+				}
+			]
+		},
+		{
+			"name": "POST Create Web Application (add access policy by uuid or remove for default)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data =  JSON.parse(responseBody);",
+							"",
+							"pm.environment.set(\"WeblinkID\", (data.uuid));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.catalog.saml20+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.catalog.saml20+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"catalogItemType\": \"Saml20\", \n\t\"uuid\": \"87c040cf-b389-41a0-9efe-c7ca64f985c5\", \n\t\"packageVersion\": \"1.0\", \n\t\"name\": \"SAML App\", \n\t\"productVersion\": null, \n\t\"description\": \"SAML App Generated by API Lab\", \n    \"accessPolicySetUuid\":\"45673818-e0db-4b86-93ce-8a35c167ee7c\",\n\t\"authInfo\": { \"type\": \"Saml20\", \"configureAs\":\"url\", \"metadataUrl\":\"https://test.vidmpreview.com/SAAS/API/1.0/GET/metadata/sp.xml\" } }"
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems"
+					]
+				},
+				"description": "Creates weblink application"
+			},
+			"response": [
+				{
+					"name": "POST Create Web Application",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.horizon.manager.catalog.saml20+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.vmware.horizon.manager.catalog.saml20+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"catalogItemType\": \"Saml20\", \n\t\"uuid\": \"87c040cf-b389-41a0-9efe-c7ca64f985c5\", \n\t\"packageVersion\": \"1.0\", \n\t\"name\": \"SAML App\", \n\t\"productVersion\": null, \n\t\"description\": \"SAML App Generated by API Lab\", \n\t\"authInfo\": { \"type\": \"Saml20\", \"configureAs\":\"url\", \"metadataUrl\":\"https://test.vidmpreview.com/SAAS/API/1.0/GET/metadata/sp.xml\" } }"
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"catalogitems"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 08:48:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.vmware.horizon.manager.catalog.saml20+json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "6115"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=aaprzmBpxviiedOVYsvBr1y2ImBXP6PIQvMMKNYo0uo5JIxLzx0M9UWODodwRlu4K12nx/CYQa83ywtWWMf3c3nBUStk6Q3THWuOLQMlOIU7KvpMaoWHkHGCw+9N; Expires=Wed, 19 Feb 2025 08:48:37 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=aaprzmBpxviiedOVYsvBr1y2ImBXP6PIQvMMKNYo0uo5JIxLzx0M9UWODodwRlu4K12nx/CYQa83ywtWWMf3c3nBUStk6Q3THWuOLQMlOIU7KvpMaoWHkHGCw+9N; Expires=Wed, 19 Feb 2025 08:48:37 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac6065-6acfffcb58f1f1403b885462;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Location",
+							"value": "https://test.vidmpreview.com:443/SAAS/jersey/manager/api/catalogitems/87c040cf-b389-41a0-9efe-c7ca64f985c5"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"87c040cf-b389-41a0-9efe-c7ca64f985c5\",\n    \"packageVersion\": \"1.0\",\n    \"name\": \"SAML App\",\n    \"productVersion\": null,\n    \"description\": \"SAML App Generated by API Lab\",\n    \"provisioningAdapter\": null,\n    \"provisioningAdapterId\": null,\n    \"isProvisioningEnabled\": false,\n    \"resourceConfiguration\": null,\n    \"catalogItemType\": \"Saml20\",\n    \"resourceSyncProfileId\": null,\n    \"cdnIconUrl\": null,\n    \"iconBytes\": null,\n    \"accessPolicySetUuid\": \"d01a145e-8157-47f7-bd20-47676bbc0c09\",\n    \"accessPolicyName\": null,\n    \"labels\": null,\n    \"uiCapabilities\": {\n        \"catalogItemLicense\": [\n            \"READ\",\n            \"UPDATE\"\n        ],\n        \"catalogItemAccessPolicy\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"UPDATE\"\n        ],\n        \"catalogItemEntitlement\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"UPDATE\"\n        ],\n        \"catalogItemDetails\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"EXPORT\",\n            \"UPDATE\"\n        ]\n    },\n    \"visible\": true,\n    \"internal\": false,\n    \"_links\": {\n        \"hw-icon\": {\n            \"href\": \"/SAAS/horizon/images/resources/Saml20_default_icon.png\"\n        },\n        \"hw-approval\": {\n            \"href\": \"/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/87c040cf-b389-41a0-9efe-c7ca64f985c5/approval\"\n        },\n        \"self\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/87c040cf-b389-41a0-9efe-c7ca64f985c5\"\n        },\n        \"hw-license\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/87c040cf-b389-41a0-9efe-c7ca64f985c5/license\"\n        },\n        \"hw-launch\": {\n            \"href\": \"/SAAS/API/1.0/GET/apps/launch/app/87c040cf-b389-41a0-9efe-c7ca64f985c5\"\n        },\n        \"hw-group-provision\": {\n            \"href\": \"/SAAS/jersey/manager/api/provisioning/groupprovisioning/87c040cf-b389-41a0-9efe-c7ca64f985c5\"\n        }\n    },\n    \"authInfo\": {\n        \"type\": \"Saml20\",\n        \"recipientName\": \"https://test.vidmpreview.com/SAAS/auth/saml/response\",\n        \"audience\": \"https://test.vidmpreview.com/SAAS/API/1.0/GET/metadata/sp.xml\",\n        \"validityTimeSeconds\": null,\n        \"signingCert\": \"-----BEGIN CERTIFICATE-----\\nMIIFFTCCAv2gAwIBAgIHB/bMgaztCjANBgkqhkiG9w0BAQsFADBCMSAwHgYDVQQD\\nDBdWTXdhcmUgSWRlbnRpdHkgTWFuYWdlcjERMA8GA1UECgwISVBNOlNBTUwxCzAJ\\nBgNVBAYTAlVTMB4XDTIxMDUxMjE4NTA1OFoXDTMxMDUxMDE4NTA1OFowQjEgMB4G\\nA1UEAwwXVk13YXJlIElkZW50aXR5IE1hbmFnZXIxETAPBgNVBAoMCElQTTpTQU1M\\nMQswCQYDVQQGEwJVUzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMQU\\nelT5unZUxY7ydecknp4hRvdrKsz1dv2SaWkFuN6FpKFfrZbs2dicdu11XLMuFP/l\\noVSVXMwy1QiCJygUaLYnFLbtaTVfwVxV22DlyaA81eVXFkRIeNUYbzrppsFCZINQ\\nC/CNM3Th6PVSOhMi2+AkUk7nEybkrg/q8iK/zfORDIXOd9SpLOrlljW2g0SB89xV\\nkt8occA5N0Z/2qZemLU/V7rSYXeKjXuhklmBKfZYwU1S9BwpALkof75a8Kk4fQ29\\nDD6yC1sJBwy9B6fzGwnM56Pcxoy1dMpdOaJ2arosgQrAkg2gAx5pmYOYmj0Z+pvl\\n49tM7MnGnJ6aeJCLMsHtraWo6vwvyJ+9zl8FFqPZVPNkKtmt84GTKpT4fu/FRgrx\\nhJS3a1RC3wl5t0w6x1lDhu3UjC0bqZbKqe7JQUyYyIr8zXgU8P1ukNE1IgDC3f5z\\nucvGCfukwl1Eb9BptUh\\nwFFaLORWqwpxJDrgc3XU9s4axwmz42slmzV3SqKMPXzczKOmpaS+I6asl992/Ewu\\nwa/CX9jU2CiLleUzlupOXyWI8EAf2soop6xewkeJAgMBAAGjEDAOMAwGA1UdEwQF\\nMAMBAf8wDQYJKoZIhvcNAQELBQADggIBACiIXe3wsr+Qq80zqlRj+LFXsaKMKFIq\\nRj6vZCsn/TPJrdDGfPNM7GYx7+667ZBoIFNeg/azILyTGd5LGdEa2Vhy9y20GmkM\\n8PFtN0kyC5AauQJoW9h+zAjxt9nDNPy8mCb0tvaZbnoqdls1iWAKekgBrepfFrMM\\nuKHKjnbKiKPn4xj5ziYaDczA6Cm+mVSXHk8bVwOIaGS2FESx3NXmr+6MGWee1UZY\\nA0+xK/zMZhoNmIt26c5wtUt9SzfdX9MlFPFKb20nmnvnJ96tLeu6Oeds6WsuzHEd\\n7tV83hincfeIiXcWy/0xJ51MYplySHkwfKISOJh7edRBzvXjv1TkXqWiFu4MCjeH\\nMyT59wWfue3cyqkTVrPEeErzGfTSW8xHR5M0RAvh0W6HAbLEE1O5PF6veR7tsddn\\n/ZSspfi6wyGWIy5X0lFU0k2yhmJn+p/DBqvAEYkA4FV1OJJi9qsKRBlNDCc6GHk7\\n5/PSBYlRk6TUYLtqk0ykWK0Uk0hAGv9sUekfCSdllrPHvPUK1bp/8sklZxW9DKcD\\nmKIRPTQJObbFc+mXn9jx3aDhUfPFOlMo7WMPzmhJVgb4rRCXDlvSNJKhYQZ/ixcA\\n6DsDFARE6NyTIOvvtnDbJd/W71cuxc74JdUqQ1RuxLTMTZQjFO7sgR92WdnSFGui\\nKRnDkffUVhuL\\n-----END CERTIFICATE-----\\n\",\n        \"parameters\": null,\n        \"attributes\": null,\n        \"nameIdFormat\": \"urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified\",\n        \"nameId\": null,\n        \"nameIdClaimTransformation\": null,\n        \"assertionConsumerServiceUrl\": \"https://test.vidmpreview.com/SAAS/auth/saml/response\",\n        \"signatureAlgorithm\": \"SHA256withRSA\",\n        \"digestAlgorithm\": \"SHA256\",\n        \"claimTransformations\": null,\n        \"configureAs\": \"manual\",\n        \"metadata\": null,\n        \"metadataUrl\": null,\n        \"includeDestination\": false,\n        \"signAssertion\": false,\n        \"signResponse\": false,\n        \"encryptAssertion\": false,\n        \"includeSigningCert\": false,\n        \"loginRedirectionUrl\": null,\n        \"relayState\": null,\n        \"relayStateParamName\": null,\n        \"encodeRelayStateValueFromParam\": false,\n        \"encryptionCerts\": [\n            \"-----BEGIN CERTIFICATE-----\\nMIIFGzCCAwOgAwIBAgIHB/bNKFdTRjANBgkqhkiG9w0BAQsFADBFMSAwHgYDVQQD\\nDBdWTXdhcmUgSWRlbnRpdHkgTWFuYWdlcjEUMBIGA1UECgwLSVBNOlNBTUxFTkMx\\nCzAJBgNVBAYTAlVTMB4XDTIxMDUxMjE4NTEwMFoXDTMxMDUxMDE4NTEwMFowRTEg\\nMB4GA1UEAwwXVk13YXJlIElkZW50aXR5IE1hbmFnZXIxFDASBgNVBAoMC0lQTTpT\\nQU1MRU5DMQswCQYDVQQGEwJVUzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoC\\nggIBALFWYX0wa1Vyb0YmTeR4huo2H2YZpX6n1Bly+aPvBikfsJHM3NfC2UbUFiOB\\nuT5mBVIkGiB/YILa3yymnrCcIDRI2/A81fhCDzZ29/powwI5MDQO8+sm2ouILBuM\\nSz2COrGch12WpeU8Fj/7VBaWl3wqyNbQUtInj+Enpw+KBX3msvR1bKxkYMqB9NNt\\nenYy9GzSIo9WBa3RD3EFDMs2nVbZux5il8RtSTmkneoJ9XHLPvjmsUHktVQmVstI\\nEitGQ/kmdQUdth/r1WYAbycS98VhtRltr7SSQFtEQYHBqYtck7hDVQjrEFCm+lRP\\ndC/HrIiQHkEgF/zrQzxHcAi4r8Sl45HU0KZ593vX9zWvo2r6nFAsNYQz+FyZDQT0\\nneQtdX9QYBrSz9wQgJWSAMg4uq6J+B4qTbSwI4qfc7sgdjk+vXHaDA3laBK2IKkX\\njzWvf7tEkTrn1KdFggk8xJ1ZDy2zRgZRvfu+deAYV3yErLHjEd547SHLsrrGf7ci\\nmVhS9Un7rTSmV2hUq7/E3AGnPjVeAmJhIK+QD14qFsa0FvGYMztFBTD6hkegDgH9sTN7ScfUftKo18E51xMfgrqjgCjJAekU741\\np3P5JxHEEDO9OIxrBJh62flDD3LQ8ERVBO64VbKfxFfdgWbRAgMBAAGjEDAOMAwG\\nA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggIBAII55egUAGa/k512jnDhjIjm\\nimw225oPf9t+g7EKVNn08FVksqREbmU8g+Zxu7VIGtUpG8dkhz/QpvzlR7uWDY9w\\nMQsSWAvz5lSBmoMvAvNFt1YSWl/fFEwhDYZ8grTuRLpg9P6b6reQWshNm6qi3+bc\\nLFfzafrhMr0W9Wt6bsYapwlgt/D6ylbMxehUQyyvc8gl7pXm+nL4b7qdt8sgBZtQ\\noV17mDyMoXW+/LdO5JSKDZddVIfVX/yKfJH90ukmzMXJ0aQ7MK/yISi++VjjoC94\\n6he7gyj5wbhvGNoNal+Z74IFIARuGz2ke59roFM1OKb5gGMm1I0POhruU+wMNZyM\\nYGdNwhtCqrcBGOrURmX+ZAP2SLypCc+GZyEizbiDmruMybUENpBNgjwTbN7hUzhz\\nVcllbjpg0UPbLw/aReqjCJPn13zNLoH84rzzObjLExPmjbDtySknBhvanCe2bM9x\\nAosTSCLEb8brZU64CqFp1eI55maobxVVUpOUJRGyXhP2QtEZ+4+PgQhKTfb+kxYV\\nvVkEijafFhf7+UKeaNPil+mMiGvG//ylF/02ZpcTx9bR9eV5f+XDXQCWhzEopJ8y\\nIUJX52ElwTLbzfywSwknJikqWUsV+v925XaqGMgwd0NN/mfLrKTXiP8y1sURL592\\nuzILTsZ+/kkvSlJMiqIU\\n-----END CERTIFICATE-----\\n\"\n        ],\n        \"allowApiAccess\": false,\n        \"credentialCheckType\": null,\n        \"proxyCount\": null,\n        \"returnFailureResponse\": false,\n        \"deviceSsoResponse\": false,\n        \"enableForceAuthnRequest\": false\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "POST Create Weblink Application  (add access policy by uuid or remove for default)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data =  JSON.parse(responseBody);",
+							"",
+							"pm.environment.set(\"WeblinkID\", (data.uuid));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"catalogItemType\": \"WebAppLink\", \n\t\"uuid\": \"85c040cf-b389-41a0-9efe-c7ca64f985c4\", \n\t\"packageVersion\": \"1.0\", \n\t\"name\": \"API Generated Weblink\", \n\t\"productVersion\": null, \n\t\"description\": \"Web Link Generated by Omnissa\",\n    \"accessPolicySetUuid\":\"45673818-e0db-4b86-93ce-8a35c167ee7c\",\n\t\"authInfo\": { \"type\": \"WebAppLink\", \"targetUrl\" : \"https://www.omnissa.com\" } }"
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems"
+					]
+				},
+				"description": "Creates weblink application"
+			},
+			"response": [
+				{
+					"name": "POST Create Weblink Application",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"catalogItemType\": \"WebAppLink\", \n\t\"uuid\": \"85c040cf-b389-41a0-9efe-c7ca64f985c4\", \n\t\"packageVersion\": \"1.0\", \n\t\"name\": \"API Generated Weblink\", \n\t\"productVersion\": null, \n\t\"description\": \"Web Link Generated by Omnissa\", \n\t\"authInfo\": { \"type\": \"WebAppLink\", \"targetUrl\" : \"https://www.omnissa.com\" } }"
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"catalogitems"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 08:44:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1327"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=OyRipikMtA0rz+mgZTp1Ec5gaDyB4CoqZv8tb5kd+6kpC8CmBwZzMO2pV71hUYF0rvllAz+dtRZ78yzrHeJK5IPkKmeKcD7gBep8eD6h/g2RlvgOcv7nN66mw9q2; Expires=Wed, 19 Feb 2025 08:44:00 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=OyRipikMtA0rz+mgZTp1Ec5gaDyB4CoqZv8tb5kd+6kpC8CmBwZzMO2pV71hUYF0rvllAz+dtRZ78yzrHeJK5IPkKmeKcD7gBep8eD6h/g2RlvgOcv7nN66mw9q2; Expires=Wed, 19 Feb 2025 08:44:00 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac5f50-397f8a4f482ab85841e41f73;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Location",
+							"value": "https://test.vidmpreview.com:443/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"85c040cf-b389-41a0-9efe-c7ca64f985c4\",\n    \"packageVersion\": \"1.0\",\n    \"name\": \"API Generated Weblink\",\n    \"productVersion\": null,\n    \"description\": \"Web Link Generated by Omnissa\",\n    \"provisioningAdapter\": null,\n    \"provisioningAdapterId\": null,\n    \"isProvisioningEnabled\": null,\n    \"resourceConfiguration\": null,\n    \"catalogItemType\": \"WebAppLink\",\n    \"resourceSyncProfileId\": null,\n    \"cdnIconUrl\": null,\n    \"iconBytes\": null,\n    \"accessPolicySetUuid\": null,\n    \"accessPolicyName\": null,\n    \"labels\": null,\n    \"uiCapabilities\": {\n        \"catalogItemEntitlement\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"UPDATE\"\n        ],\n        \"catalogItemDetails\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"UPDATE\"\n        ]\n    },\n    \"visible\": true,\n    \"internal\": false,\n    \"_links\": {\n        \"hw-icon\": {\n            \"href\": \"/SAAS/horizon/images/resources/WebAppLink_default_icon.png\"\n        },\n        \"hw-approval\": {\n            \"href\": \"/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4/approval\"\n        },\n        \"self\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        },\n        \"hw-license\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4/license\"\n        },\n        \"hw-launch\": {\n            \"href\": \"/SAAS/API/1.0/GET/apps/launch/app/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        },\n        \"hw-group-provision\": {\n            \"href\": \"/SAAS/jersey/manager/api/provisioning/groupprovisioning/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        }\n    },\n    \"authInfo\": {\n        \"type\": \"WebAppLink\",\n        \"targetUrl\": \"https://www.omnissa.com\"\n    }\n}"
+				},
+				{
+					"name": "POST Create Weblink Application",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"catalogItemType\": \"WebAppLink\", \n\t\"uuid\": \"85c040cf-b389-41a0-9efe-c7ca64f985c4\", \n\t\"packageVersion\": \"1.0\", \n\t\"name\": \"API Generated Weblink\", \n\t\"productVersion\": null, \n\t\"description\": \"Web Link Generated by Omnissa\",\n    \"accessPolicySetUuid\":\"45673818-e0db-4b86-93ce-8a35c167ee7c\",\n\t\"authInfo\": { \"type\": \"WebAppLink\", \"targetUrl\" : \"https://www.omnissa.com\" } }"
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"catalogitems"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 09:23:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.vmware.horizon.manager.catalog.webapplink+json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1361"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=BNpD73/DMHzY+xXQ8HaK8q1cC56jFmsIcK8YyKRIbosz2EfE00UeG2Lp7NI0sZZr+uVlSH2D0ZNCisYBUZpjRfANxJRlvq03Poty0+jX/59Ak1/GRKcsBkOQEAI2; Expires=Wed, 19 Feb 2025 09:23:15 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=BNpD73/DMHzY+xXQ8HaK8q1cC56jFmsIcK8YyKRIbosz2EfE00UeG2Lp7NI0sZZr+uVlSH2D0ZNCisYBUZpjRfANxJRlvq03Poty0+jX/59Ak1/GRKcsBkOQEAI2; Expires=Wed, 19 Feb 2025 09:23:15 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac6883-1fbfa20e44dc1b865e7235f4;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Location",
+							"value": "https://test.vidmpreview.com:443/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"85c040cf-b389-41a0-9efe-c7ca64f985c4\",\n    \"packageVersion\": \"1.0\",\n    \"name\": \"API Generated Weblink\",\n    \"productVersion\": null,\n    \"description\": \"Web Link Generated by Omnissa\",\n    \"provisioningAdapter\": null,\n    \"provisioningAdapterId\": null,\n    \"isProvisioningEnabled\": null,\n    \"resourceConfiguration\": null,\n    \"catalogItemType\": \"WebAppLink\",\n    \"resourceSyncProfileId\": null,\n    \"cdnIconUrl\": null,\n    \"iconBytes\": null,\n    \"accessPolicySetUuid\": \"45673818-e0db-4b86-93ce-8a35c167ee7c\",\n    \"accessPolicyName\": null,\n    \"labels\": null,\n    \"uiCapabilities\": {\n        \"catalogItemEntitlement\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"UPDATE\"\n        ],\n        \"catalogItemDetails\": [\n            \"CREATE\",\n            \"READ\",\n            \"DELETE\",\n            \"UPDATE\"\n        ]\n    },\n    \"visible\": true,\n    \"internal\": false,\n    \"_links\": {\n        \"hw-icon\": {\n            \"href\": \"/SAAS/horizon/images/resources/WebAppLink_default_icon.png\"\n        },\n        \"hw-approval\": {\n            \"href\": \"/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4/approval\"\n        },\n        \"self\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        },\n        \"hw-license\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4/license\"\n        },\n        \"hw-launch\": {\n            \"href\": \"/SAAS/API/1.0/GET/apps/launch/app/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        },\n        \"hw-group-provision\": {\n            \"href\": \"/SAAS/jersey/manager/api/provisioning/groupprovisioning/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        }\n    },\n    \"authInfo\": {\n        \"type\": \"WebAppLink\",\n        \"targetUrl\": \"https://www.omnissa.com\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "DETLETE Web Application",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/:uuid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems",
+						":uuid"
+					],
+					"variable": [
+						{
+							"key": "uuid",
+							"value": "{{WeblinkID}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DETLETE Web Application",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/:uuid",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"catalogitems",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "{{WeblinkID}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 08:46:29 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=R5gsomA1xu3+zURtRj1eBJaoqNOkL5W5CmTbA3Pd0N8RaPJv345k/e8WFT01gZXuz5q4EAO6Q8Tu8dLcWF4WmavyGSTd3Qx5zk0SKDVKYFVkgQKhgoRqPXI4hN2w; Expires=Wed, 19 Feb 2025 08:46:29 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=R5gsomA1xu3+zURtRj1eBJaoqNOkL5W5CmTbA3Pd0N8RaPJv345k/e8WFT01gZXuz5q4EAO6Q8Tu8dLcWF4WmavyGSTd3Qx5zk0SKDVKYFVkgQKhgoRqPXI4hN2w; Expires=Wed, 19 Feb 2025 08:46:29 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac5fe5-160b979d7ea51bd04e4eb0bd;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "POST Search Web applications",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.catalog.item.list+json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.catalog.search+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"includeAttributes\":[\n        \"labels\",\n        \"uiCapabilities\",\n        \"authInfo\"\n        ],\n    \"includeTypes\":[\n        \"Saml11\",\n        \"Saml20\",\n        \"WSFed12\",\n        \"WebAppLink\",\n        \"AnyApp\"\n        ],\n    \"nameFilter\":\"\",\n    \"categories\":[]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/search?pageSize=200&startIndex=0&useAbsoluteUrl=true&locale=en",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems",
+						"search"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "200"
+						},
+						{
+							"key": "startIndex",
+							"value": "0"
+						},
+						{
+							"key": "useAbsoluteUrl",
+							"value": "true"
+						},
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST Search Web applications",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.vmware.horizon.manager.catalog.item.list+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.horizon.manager.catalog.search+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"includeAttributes\":[\n        \"labels\",\n        \"uiCapabilities\",\n        \"authInfo\"\n        ],\n    \"includeTypes\":[\n        \"Saml11\",\n        \"Saml20\",\n        \"WSFed12\",\n        \"WebAppLink\",\n        \"AnyApp\"\n        ],\n    \"nameFilter\":\"\",\n    \"categories\":[]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/search?pageSize=200&startIndex=0&useAbsoluteUrl=true&locale=en",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"catalogitems",
+								"search"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "200"
+								},
+								{
+									"key": "startIndex",
+									"value": "0"
+								},
+								{
+									"key": "useAbsoluteUrl",
+									"value": "true"
+								},
+								{
+									"key": "locale",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 08:41:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.vmware.horizon.manager.catalog.item.list+json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=SplZ/a4QnuXM/+EEb4UXCn9blxxXH9voKlRQ8+vp/jvGBoK2a27OSaBfv+syXpN2EyS1MX+jh4AithddBMuE3NeKdM3D6+HnwaQ/f5oHsAav8wrSM5o1gvFNM8s3; Expires=Wed, 19 Feb 2025 08:41:14 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=SplZ/a4QnuXM/+EEb4UXCn9blxxXH9voKlRQ8+vp/jvGBoK2a27OSaBfv+syXpN2EyS1MX+jh4AithddBMuE3NeKdM3D6+HnwaQ/f5oHsAav8wrSM5o1gvFNM8s3; Expires=Wed, 19 Feb 2025 08:41:14 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac5eaa-43e604c5500d2bad0e275485;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": {}
+				}
+			]
+		},
+		{
+			"name": "PUT Add Web Application Entitlement (requires all assignments by user or group uuid)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.entitlements.definition.catalogitem+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"groups\":[{\"activationPolicy\":\"USER_ACTIVATED\",\"subjectId\":\"f0eb11a6-c407-4bcf-9b7b-ff42d4e5a719\",\"negative\":false}],\"users\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/:uuid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"entitlements",
+						"definitions",
+						"catalogitems",
+						":uuid"
+					],
+					"variable": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.horizon.manager.entitlements.definition.catalogitem+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"groups\":[{\"activationPolicy\":\"USER_ACTIVATED\",\"subjectId\":\"f0eb11a6-c407-4bcf-9b7b-ff42d4e5a719\",\"negative\":false}],\"users\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/:uuid",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"entitlements",
+								"definitions",
+								"catalogitems",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "d6e1f1d4-31a6-4c4b-8826-8a94497351fe"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 09:17:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.vmware.horizon.manager.entitlements.definition.response+json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "105"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=LV1cY6fH5iWzzQxHJvBuZ8SYlCfA/FRXqjm4Fv4UGMt0rIZkFBEuE5HJ7yeinwp04oJVe23+qUA93aCTw9KVLasCxh68c12Lc+tbCKGziFslYKlhhVTUOHRzpjy6; Expires=Wed, 19 Feb 2025 09:17:44 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=LV1cY6fH5iWzzQxHJvBuZ8SYlCfA/FRXqjm4Fv4UGMt0rIZkFBEuE5HJ7yeinwp04oJVe23+qUA93aCTw9KVLasCxh68c12Lc+tbCKGziFslYKlhhVTUOHRzpjy6; Expires=Wed, 19 Feb 2025 09:17:44 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac6738-1680e229571691234f00d43a;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_links\": {\n        \"self\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/d6e1f1d4-31a6-4c4b-8826-8a94497351fe\"\n        }\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
