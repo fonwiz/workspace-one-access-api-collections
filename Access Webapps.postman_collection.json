@@ -1138,6 +1138,180 @@
 					"body": "{\n    \"_links\": {\n        \"self\": {\n            \"href\": \"/SAAS/jersey/manager/api/catalogitems/d6e1f1d4-31a6-4c4b-8826-8a94497351fe\"\n        }\n    }\n}"
 				}
 			]
+		},
+		{
+			"name": "GET List Web Application Entitlements",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.entitlements.definition.catalogitem+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"groups\":[{\"activationPolicy\":\"USER_ACTIVATED\",\"subjectId\":\"f0eb11a6-c407-4bcf-9b7b-ff42d4e5a719\",\"negative\":false}],\"users\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/:uuid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"entitlements",
+						"definitions",
+						"catalogitems",
+						":uuid"
+					],
+					"variable": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get List  Web Application Entitlements",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.horizon.manager.entitlements.definition.catalogitem+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"groups\":[{\"activationPolicy\":\"USER_ACTIVATED\",\"subjectId\":\"f0eb11a6-c407-4bcf-9b7b-ff42d4e5a719\",\"negative\":false}],\"users\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/:uuid",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"SAAS",
+								"jersey",
+								"manager",
+								"api",
+								"entitlements",
+								"definitions",
+								"catalogitems",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "{{WeblinkID}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 09:46:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.vmware.horizon.manager.entitlements.definition.list+json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "472"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Server",
+							"value": "http"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALB=j6r6yMo4Q3z8g9lciaO9FseOEz+Szi72EX2xOKp7PvYEPzYbAESOy3rlBwuqbaTke6PUkF/M4U07e1zKLmiaGymRZT6ymMgLcNvh9PCoilFIToFOwrXsLnuo5yRG; Expires=Wed, 19 Feb 2025 09:46:43 GMT; Path=/"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "AWSALBCORS=j6r6yMo4Q3z8g9lciaO9FseOEz+Szi72EX2xOKp7PvYEPzYbAESOy3rlBwuqbaTke6PUkF/M4U07e1zKLmiaGymRZT6ymMgLcNvh9PCoilFIToFOwrXsLnuo5yRG; Expires=Wed, 19 Feb 2025 09:46:43 GMT; Path=/; SameSite=None; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=fa5e5dfca958dc1; Path=/; Secure; SameSite=None"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src blob: https: 'self' ; script-src 'unsafe-inline' https: 'self' ; style-src 'unsafe-inline' https: 'self'; img-src https: data: 'self'"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "frame-ancestors https://www.tutorialspoint.com https://test.org https://www.tutorialspoint 'self'"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-67ac6e03-7ea7a52133ab07a609d15ab5;"
+						},
+						{
+							"key": "P3P",
+							"value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+						},
+						{
+							"key": "X-XSRF-TOKEN",
+							"value": "fa5e5dfca958dc1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"items\": [\n        {\n            \"catalogItemId\": \"85c040cf-b389-41a0-9efe-c7ca64f985c4\",\n            \"subjectType\": \"GROUPS\",\n            \"activationPolicy\": \"USER_ACTIVATED\",\n            \"name\": \"ALL USERS\",\n            \"displayName\": \"ALL USERS\",\n            \"_links\": {\n                \"hw-catalogItem\": {\n                    \"href\": \"/SAAS/jersey/manager/api/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n                }\n            }\n        }\n    ],\n    \"totalCount\": 1,\n    \"totalPageNumber\": 1,\n    \"currentPageNumber\": 1,\n    \"_links\": {\n        \"self\": {\n            \"href\": \"/SAAS/jersey/manager/api/entitlements/definitions/catalogitems/85c040cf-b389-41a0-9efe-c7ca64f985c4\"\n        }\n    }\n}"
+				}
+			]
 		}
 	],
 	"auth": {
