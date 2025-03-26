@@ -1,0 +1,934 @@
+{
+	"info": {
+		"_postman_id": "02c11188-3711-451f-9f0a-7b0aaf222045",
+		"name": "Access Policies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3247120"
+	},
+	"item": [
+		{
+			"name": "Update Policy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset+json"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset+json"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"45673818-e0db-4b86-93ce-8a35c167ee7c\",\"name\":\"Web Apps Open\",\"rules\":[{\"resources\":[\"*\"],\"actions\":[\"*\"],\"conditions\":{\"Equals\":{\"fed:orgNetworkId\":[\"588fba31-4f94-42f9-ad7a-fb40ff04744c\"],\"fed:deviceType\":[\"ANY\"]}},\"advice\":{\"fed:action\":\"AUTH\",\"fed:ttl\":28800,\"fed:authChaining\":[{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000001\",\"owner\":\"INTERNAL\"}]},{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000008\",\"owner\":\"INTERNAL\"}]}]}},{\"resources\":[\"*\"],\"actions\":[\"*\"],\"conditions\":{\"Equals\":{\"fed:orgNetworkId\":[\"2bb8b25e-698d-4238-8b23-962a539652a3\"],\"fed:deviceType\":[\"IOS_DEVICE\"],\"fed:groupUuids\":[\"fe3c5dec-78d7-4257-b40d-4fec3c25ad12\"]}},\"advice\":{\"fed:action\":\"AUTH_CONTINUE_ON_FAILURE\",\"fed:ttl\":28800,\"fed:authChaining\":[{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000008\",\"owner\":\"INTERNAL\"}]}],\"fed:customErrorId\":null}},{\"resources\":[\"*\"],\"actions\":[\"*\"],\"conditions\":{\"Equals\":{\"fed:orgNetworkId\":[\"2bb8b25e-698d-4238-8b23-962a539652a3\"],\"fed:deviceType\":[\"ANDROID_DEVICE\"]}},\"advice\":{\"fed:action\":\"AUTH\",\"fed:ttl\":28800,\"fed:authChaining\":[{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000006\",\"owner\":\"INTERNAL\"}]},{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000008\",\"owner\":\"INTERNAL\"}]}]}},{\"resources\":[\"*\"],\"actions\":[\"*\"],\"conditions\":{\"Equals\":{\"fed:orgNetworkId\":[\"2bb8b25e-698d-4238-8b23-962a539652a3\"],\"fed:deviceType\":[\"WEB\"]}},\"advice\":{\"fed:action\":\"AUTH\",\"fed:ttl\":28800,\"fed:authChaining\":[{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000024\",\"owner\":\"INTERNAL\"}]},{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000008\",\"owner\":\"INTERNAL\"}]},{\"chain\":[{\"authTypeId\":\"00000000-0000-0000-0000-000000000014\",\"owner\":\"INTERNAL\"}]}]}}],\"tag\":\"APP_ACCESS\"}"
+				},
+				"url": {
+					"raw": "https://{{host}}/acs/rulesets/:rulesetid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"acs",
+						"rulesets",
+						":rulesetid"
+					],
+					"variable": [
+						{
+							"key": "rulesetid",
+							"value": "45673818-e0db-4b86-93ce-8a35c167ee7c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Policy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset+json"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/acs/rulesets/:rulesetid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"acs",
+						"rulesets",
+						":rulesetid"
+					],
+					"variable": [
+						{
+							"key": "rulesetid",
+							"value": "45673818-e0db-4b86-93ce-8a35c167ee7c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Policy association",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset.associations.bulk.request+json"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/acs/associations/rulesets/:rulesetid",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"acs",
+						"associations",
+						"rulesets",
+						":rulesetid"
+					],
+					"variable": [
+						{
+							"key": "rulesetid",
+							"value": "45673818-e0db-4b86-93ce-8a35c167ee7c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Policy association",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"operations\":[\n        {\"resources\":[\"fe997013-79dd-45ca-8bc0-1a068043ff39\"],\"method\":\"DELETE\"},\n        {\"resources\":[\"b991432f-a508-40c8-9d99-c859e766981e\"],\"method\":\"POST\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://aw-fonwiz.vidmpreview.com/acs/associations/resources/rulesets/:rulesetid",
+					"protocol": "https",
+					"host": [
+						"aw-fonwiz",
+						"vidmpreview",
+						"com"
+					],
+					"path": [
+						"acs",
+						"associations",
+						"resources",
+						"rulesets",
+						":rulesetid"
+					],
+					"variable": [
+						{
+							"key": "rulesetid",
+							"value": "45673818-e0db-4b86-93ce-8a35c167ee7c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Org Networks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.orgnetwork.list+json"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/orgnetworks",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"orgnetworks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Apps by ID",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.horizon.manager.catalog.search.bulk+json"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"catalogItemIds\":[\"7b8ab254-5d40-4667-bc0e-09607a4f34a9\",\"e4126e57-93c4-486a-b838-b62f36aac301\",\"509b3483-5ca5-439c-a9f7-ddad173b3be0\",\"fe997013-79dd-45ca-8bc0-1a068043ff39\",\"b991432f-a508-40c8-9d99-c859e766981e\",\"d6e1f1d4-31a6-4c4b-8826-8a94497351fe\",\"85c040cf-b389-41a0-9efe-c7ca64f985c4\"],\"includeAttributes\":[\"authInfo\"]}"
+				},
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/catalogitems/search",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"catalogitems",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get authmethods",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.vidm.amms.auth.methods.summary.list+json"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/amms/authmethods",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"amms",
+						"authmethods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Policies List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "694a4a97a21c924"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset.list+json"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/acs/rulesets?tag=APP_ACCESS&policyListType=APP_ACCESS_POLICIES&startIndex=1&pageSize=20",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"acs",
+						"rulesets"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "APP_ACCESS"
+						},
+						{
+							"key": "policyListType",
+							"value": "APP_ACCESS_POLICIES"
+						},
+						{
+							"key": "startIndex",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "8fd4e35e78b4925"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset+json"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.vidm.accesscontrol.ruleset+json"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"New Policy\",\n    \"description\": \"Test\",\n    \"rules\": [\n        {\n            \"resources\": [\n                \"*\"\n            ],\n            \"actions\": [\n                \"*\"\n            ],\n            \"conditions\": {\n                \"Equals\": {\n                    \"fed:orgNetworkId\": [\n                        \"2bb8b25e-698d-4238-8b23-962a539652a3\"\n                    ],\n                    \"fed:deviceType\": [\n                        \"ANY\"\n                    ],\n                    \"fed:groupUuids\": [\n                        \"fe3c5dec-78d7-4257-b40d-4fec3c25ad12\"\n                    ]\n                }\n            },\n            \"advice\": {\n                \"fed:action\": \"AUTH_CONTINUE_ON_FAILURE\",\n                \"fed:ttl\": 900,\n                \"fed:authChaining\": [\n                    {\n                        \"chain\": [\n                            {\n                                \"authTypeId\": \"00000000-0000-0000-0000-000000000008\",\n                                \"owner\": \"INTERNAL\"\n                            },\n                            {\n                                \"orChain\": [\n                                    {\n                                        \"authTypeId\": \"123ca1ff-f2de-447d-974e-eb0e60e6409b\",\n                                        \"owner\": \"THIRDPARTY\"\n                                    },\n                                    {\n                                        \"authTypeId\": \"a6f9026f-1929-4633-8738-74c55d80f316\",\n                                        \"owner\": \"THIRDPARTY\"\n                                    },\n                                    {\n                                        \"authTypeId\": \"3c43c259-61b2-4a25-8d26-6e556666f7df\",\n                                        \"owner\": \"THIRDPARTY\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"chain\": [\n                            {\n                                \"authTypeId\": \"8d404aae-9c4f-416b-a7e6-848807e7fcd7\",\n                                \"owner\": \"THIRDPARTY\"\n                            }\n                        ]\n                    }\n                ],\n                \"fed:customErrorId\": \"07ea53c6-539d-44be-96d7-1eaa59b7676c\"\n            }\n        }\n    ],\n    \"tag\": \"APP_ACCESS\"\n}"
+				},
+				"url": {
+					"raw": "https://{{host}}/acs/rulesets",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"acs",
+						"rulesets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create custom error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "8fd4e35e78b4925"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.vmware.vidm.federation..customerror+json"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\":\"New message\",\n    \"linkText\":\"Failurelink\",\n    \"linkUrl\":\"https://Failurelink.org\",\n    \"id\":\"07ea53c6-539d-44be-96d7-1eaa59b7676c\"\n}"
+				},
+				"url": {
+					"raw": "https://{{host}}/federation/customerrors",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"federation",
+						"customerrors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "8fd4e35e78b4925"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.vmware.horizon.manager.search.items+json"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Brave\";v=\"134\""
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "host",
+						"value": "aw-fonwiz.vidmpreview.com",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/SAAS/jersey/manager/api/search/suggest?query=Test&type=Group&maxResults=100",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SAAS",
+						"jersey",
+						"manager",
+						"api",
+						"search",
+						"suggest"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Test"
+						},
+						{
+							"key": "type",
+							"value": "Group"
+						},
+						{
+							"key": "maxResults",
+							"value": "100"
+						},
+						{
+							"key": "_t",
+							"value": "1742991553031",
+							"disabled": true
+						},
+						{
+							"key": "locale",
+							"value": "en",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
